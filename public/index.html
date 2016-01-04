@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="scotchApp">
+ <head>
+  <meta charset="UTF-8">
+  
+  <title> Homepage </title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.css">
+ </head>
+ <body ng-controller="mainController">
+ 	<!-- HEADER AND NAVBAR -->
+	<header>
+		<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Angular Routing Example</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+				<li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+				<li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+				<li><a href="#users"> Users </a></li>
+				<li><a href="#crud"> CRUD app </a></li>
+			</ul>
+		</div>
+		</nav>
+	</header>
+
+	<!-- MAIN CONTENT AND INJECTED VIEWS -->
+	<div id="main">
+		 <div ng-view></div>
+	</div>
+  
+
+
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/angular-route.js"></script>
+<script src="script.js"></script>
+ </body>
+</html>

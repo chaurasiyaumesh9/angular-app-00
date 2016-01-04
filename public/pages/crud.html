@@ -1,0 +1,30 @@
+<div class="jumbotron text-center">
+	<h1> Angular service </h1>
+
+	<p>{{ message }}</p>
+</div>
+
+
+<div class="container">
+
+	<ul>
+		<li ng-repeat="user in usersList">
+			{{ user.username }} ( <a ng-click="deleteUser(user)">  delete </a> ) 
+		</li>
+	</ul>
+</div>
+
+<div class="container">
+	<form ng-submit="addUser()">
+		<input type="text" size='20' ng-model="user.username">
+		<button class="btn btn-primary"> add user </button>
+	</form>
+</div>
+
+<style type="text/css">
+    a[ ng-click ] {
+        color: #FF00CC ;
+        cursor: pointer ;
+        text-decoration: underline ;
+    }
+</style>
