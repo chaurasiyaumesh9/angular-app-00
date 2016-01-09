@@ -1,0 +1,32 @@
+<div class="jumbotron text-center">
+	<h1> Add new expense  </h1>
+	<p>{{ message }}</p>
+</div>
+
+
+<div class="container">
+	<div class="alert alert-success" ng-show="showSuccessAlert">
+	  <strong>Success!</strong> Entry successfull!
+	</div>
+	<form role="form" ng-submit="addNewExpense()" method="POST">
+
+	  <div class="form-group">
+		<label for="edate">Date of expense </label>
+		<input type="text" class="form-control" id="edate" ng-model="expense.e_date">
+	  </div>
+
+	  <div class="form-group">
+		<label for="eamount"> Amount being spent </label>
+		<input type="text" class="form-control" id="eamount" ng-model="expense.e_amount">
+	  </div>
+
+	  <div class="form-group">
+		<label for="pwd"> Location/Venue  </label>
+		<input type="text" class="form-control" id="elocation" ng-model="expense.e_venue">
+	  </div>
+
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+	
+</div>

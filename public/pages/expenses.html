@@ -1,0 +1,26 @@
+<!-- account.html -->
+<div class="jumbotron text-center">
+	<h1>Expense Tracker</h1>
+
+	<p>{{ message }}</p>
+</div>
+
+
+<div id="" class="container">
+	
+	<table class="table table-responsive table-striped">
+		<thead>
+			<tr>
+				<th> Date </th>
+				<th> Amount </th>
+				<th> Venue </th>
+			</tr>
+		</thead>
+		<tr ng-repeat="expense in expenses">
+				<td> {{ expense.e_date }} </td>
+				<td> {{ expense.e_amount }} </td>
+				<td> {{ expense.e_venue }} </td>
+			</tr>
+	</table>
+	<a href="#expenses/add-new" class="btn btn-primary"> Add New </a>
+</div>

@@ -57,7 +57,6 @@ app.get('/expenses', function( request, response ){
 	expenseApp.expenseMethods.getAllExpenses( pool, request, response );
 });
 app.get('/expenses/add-new', function( request, response ){
-	console.log( req.body );
 	expenseApp.expenseMethods.addNewExpense( pool, request, response );
 });
 

@@ -1,0 +1,103 @@
+npm install -g express-generator
+express -e -c sass myFirstExpressApp
+
+SET DEBUG=myFirstExpressApp:* & npm start
+
+
+https://github.com/chaurasiyaumesh9/myFirstExpressApp.git
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/chaurasiyaumesh9/myFirstExpressApp.git
+git push -u origin master
+
+OR 
+
+git remote add github https://github.com/chaurasiyaumesh9/myFirstExpressApp.git
+git push -u github master
+
+
+
+events
+e_Id
+e_date
+e_amount
+e_venue
+
+CREATE TABLE events
+(
+	e_Id int NOT NULL AUTO_INCREMENT,
+	e_date DATE,
+	e_amount int NOT NULL,
+	e_venue varchar(250) NOT NULL,
+	PRIMARY KEY (e_Id)
+)
+
+INSERT INTO events (e_date, e_amount, e_venue)
+  VALUES (STR_TO_DATE('1-01-2012', '%d-%m-%Y'), 2500, 'Kinara Vasai W' ) ;
+
+  INSERT INTO events (e_date, e_amount, e_venue)
+  VALUES (STR_TO_DATE('31-12-2015', '%d-%m-%Y'), 2600, 'RJ Virar W' ) ;
+
+  06/12/2015 	BENNYS KITCHEN AND BAR THANE IN / NALLASOPARA W	Debit 	1,925
+  19/12/2015	MCDONALDS-VASAI BROADW MUMBAI IN	326.02 (Dr)
+  20/12/2015 	PLANET 50 50 THANE IN / VASAI WEST FORM HOUSE	Debit 	2,005
+  25/12/2015	HOTEL KINARA MUMBAI IN/ VASAI WEST	1,785.00 (Dr)
+  06/01/2016	MANTHAN BAR & RESTAURA MUMBAI IN	2,327.00 (Dr)
+
+2015-12-06
+
+payers
+p_Id
+e_Id
+m_Id
+p_amount
+
+
+CREATE TABLE payers
+(
+	p_Id int NOT NULL AUTO_INCREMENT,
+	e_Id int NOT NULL,
+	m_Id int NOT NULL,
+	p_amount int NOT NULL,
+	PRIMARY KEY (p_Id),
+	FOREIGN KEY (e_Id) REFERENCES events(e_Id),
+	FOREIGN KEY (m_Id) REFERENCES members(m_Id)
+)
+
+INSERT INTO payers (e_Id, m_Id, p_amount)
+  VALUES ( 2, 1, 600 ) ;
+
+  INSERT INTO payers (e_Id, m_Id, p_amount)
+  VALUES (2, 4, 300 ) ;
+
+   INSERT INTO payers (e_Id, m_Id, p_amount)
+  VALUES ( 2, 6, 150 ) ;
+
+
+
+
+
+
+members
+m_Id
+m_name
+
+
+
+CREATE TABLE members
+(
+	m_Id int NOT NULL AUTO_INCREMENT,
+	m_name varchar(250) NOT NULL,
+	PRIMARY KEY (O_Id)
+)
+
+INSERT INTO `members` (`m_name`) VALUES
+('Umesh Chaurasiya'),
+('Sandeep Gupta'),
+('Umesh Yadav'),
+('Mithilesh Yadav'),
+('Jayesh Yadav'),
+('Ashish Pandey'),
+('Vikas Gupta');

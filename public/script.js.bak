@@ -177,9 +177,6 @@ scotchApp.service("expenseService", function($http, $q){
 		var request = $http({
             method: "post",
             url: "/expenses/add-new",
-            params: {
-                action: "add"
-            },
             data: {
                 expense: expense
             }
