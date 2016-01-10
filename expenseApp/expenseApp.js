@@ -3,14 +3,16 @@
 
 exports.expenseMethods = {
 	getAllExpenses: getAllExpenses,
-	addNewExpense: addNewExpense
+	addNewExpense: addNewExpense,
+	removeExpenses: removeExpenses
 }
 
 function getAllExpenses(sqlpool, req, res){
 	sqlpool.getConnection( function(err, conn){
-		conn.query("select e_date, e_amount, e_venue from events", function(err, rows) {
+		conn.query("select e_Id, e_date, e_amount, e_venue from events", function(err, rows) {
 			 if (!err)
 			{
+				// console.log( rows );
 				res.json( rows );
 			}else{
 				console.log('Error while performing the query..check function getAllExpenses() for more details..');
@@ -20,14 +22,28 @@ function getAllExpenses(sqlpool, req, res){
 }
 
 function addNewExpense(sqlpool, req,res){
-	console.log( req.body );
 	sqlpool.getConnection( function(err, conn){
-		conn.query("insert into events(e_date, e_amount, e_venue) values('"+ req.body.e_date +"','"+ req.body.e_amount +"','"+ e_venue +"')", function(err, rows) {
+		conn.query("insert into events(e_date, e_amount, e_venue) values('"+ req.body.expense.e_date +"','"+ req.body.expense.e_amount +"','"+ req.body.expense.e_venue +"')", function(err, rows) {
              if (!err)
 			{
 				res.json( rows );
 			}else{
 				console.log('Error while performing the query..check function addNewExpense() for more details..');
+			}
+			conn.release();
+         });
+	});
+}
+
+function removeExpenses(sqlpool, req,res){
+	console.log( req.params.id );
+	sqlpool.getConnection( function(err, conn){
+		conn.query("delete from events where e_Id in ("+ req.params.id +")", function(err, rows) {
+             if (!err)
+			{
+				res.json( rows );
+			}else{
+				console.log('Error while performing the query..check function removeExpenses() for more details..');
 			}
 			conn.release();
          });

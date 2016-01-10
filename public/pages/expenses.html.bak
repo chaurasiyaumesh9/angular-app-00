@@ -7,20 +7,28 @@
 
 
 <div id="" class="container">
-	
+	<div class="alert alert-success" ng-show="showSuccessAlert">
+	  <strong>Success!</strong> Record Deleted successfully!
+	</div>
 	<table class="table table-responsive table-striped">
 		<thead>
 			<tr>
 				<th> Date </th>
 				<th> Amount </th>
 				<th> Venue </th>
+				<th> <input type="checkbox" id="chk-checkall" ng-model="selectAll" ng-click="checkAll()" /> </th>
 			</tr>
 		</thead>
 		<tr ng-repeat="expense in expenses">
 				<td> {{ expense.e_date }} </td>
 				<td> {{ expense.e_amount }} </td>
 				<td> {{ expense.e_venue }} </td>
+				<td> 
+					<span class="" ng-hide="true"> {{ expense.e_Id }} </span>
+					<input type="checkbox" id="chk-checksingle" ng-model="expense.selectSingle"  /> 
+				</td>
 			</tr>
 	</table>
-	<a href="#/expenses/add-new" class="btn btn-primary"> Add New </a>
+	<a href="expenses/add-new" class="btn btn-primary"> Add New </a>
+	<button class="btn btn-danger" ng-show="toggleDelete()" ng-click="removeExpenses()"> Delete </button>
 </div>

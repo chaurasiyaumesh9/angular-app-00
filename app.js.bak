@@ -56,16 +56,20 @@ app.delete('/crud/:id', function( request, response ){
 app.get('/expenses', function( request, response ){
 	expenseApp.expenseMethods.getAllExpenses( pool, request, response );
 });
-app.get('/expenses/add-new', function( request, response ){
+app.post('/expenses/add-new', function( request, response ){
 	expenseApp.expenseMethods.addNewExpense( pool, request, response );
+});
+app.delete('/expenses', function( request, response ){
+	expenseApp.expenseMethods.removeExpenses( pool, request, response );
 });
 
 
 
 
 
-app.listen(8235, function(){
-	console.log('site running on port 8235');
+
+app.listen(1702, function(){
+	console.log('site running on port 1702');
 });
 
 function getContactById(req, res){

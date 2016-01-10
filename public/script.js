@@ -1,7 +1,7 @@
 var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
 
-scotchApp.config(function($routeProvider) {
+scotchApp.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 
 		// route for the home page
@@ -26,7 +26,7 @@ scotchApp.config(function($routeProvider) {
 			controller  : 'usersController'
 		})
 		.when('/user/:id', {
-			templateUrl : 'pages/user.html',
+			templateUrl : '/pages/user.html',
 			controller  : 'userController'
 		})
 		.when('/crud', {
@@ -38,9 +38,21 @@ scotchApp.config(function($routeProvider) {
 			controller  : 'expensesController'
 		})
 		.when('/expenses/add-new', {
-			templateUrl : 'pages/add-new-expense.html',
+			templateUrl : '/pages/add-new-expense.html',
 			controller  : 'expensesController'
 		});
+
+		if(window.history && window.history.pushState){
+            //$locationProvider.html5Mode(true); will cause an error $location in HTML5 mode requires a  tag to be present! Unless you set baseUrl tag after head tag like so: <head> <base href="/">
+
+         // to know more about setting base URL visit: https://docs.angularjs.org/error/$location/nobase
+
+         // if you don't wish to set base URL then use this
+         $locationProvider.html5Mode({
+                 enabled: true,
+                 requireBase: false
+          });
+        }
 });
 scotchApp.controller('mainController', function($scope) {
 	// create a message to display in our view
@@ -60,11 +72,57 @@ scotchApp.controller('expensesController', function($scope, $http, expenseServic
 	loadRemoteData();
 
 	$scope.addNewExpense = function(){   
-		console.log( $scope.expense );
-		expenseService.addNewExpense( $scope.expense ).then( function(){}, function(errorMessage ){ 
+		
+		expenseService.addNewExpense( $scope.expense ).then( function(){ 
+			loadRemoteData(); $scope.showSuccessAlert = true; 
+		}, function(errorMessage ){ 
 			console.warn( errorMessage );
 		});
 		clearform();
+	}
+
+	function getIdsToBeDeleted() {
+		var arr = [];
+		for (var i=0;i<$scope.expenses.length ;i++ )
+		{
+			if ( $scope.expenses[i].selectSingle )
+			{
+				arr.push( $scope.expenses[i]["e_Id"] );
+			}
+		}
+		return arr.join();
+		
+	}
+
+	$scope.removeExpenses = function(){
+		console.log( getIdsToBeDeleted() );
+		expenseService.removeExpenses( getIdsToBeDeleted() ).then( function(){ 
+			loadRemoteData();
+			$scope.showSuccessAlert = true;
+		}, function(errorMessage ){ 
+			console.warn( errorMessage );
+		});
+	}
+	$scope.checkAll = function(){
+		if (!$scope.selectAll) {
+            $scope.selectAll = true;
+        } else {
+            $scope.selectAll = false;
+        }
+        angular.forEach($scope.expenses, function (expense) {
+            expense.selectSingle = $scope.selectAll;
+        });
+	}
+
+	$scope.toggleDelete = function(){
+		for (var i=0;i<$scope.expenses.length ;i++ )
+		{
+			if ( $scope.expenses[i].selectSingle )
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	function clearform(){
 		$scope.expense = {};
@@ -159,7 +217,8 @@ scotchApp.controller('userController', function($scope,  $http, $routeParams) {
 scotchApp.service("expenseService", function($http, $q){
 	return({
         getAllExpenses: getAllExpenses,
-		addNewExpense: addNewExpense
+		addNewExpense: addNewExpense,
+		removeExpenses: removeExpenses
     });
 
 	function getAllExpenses() {
@@ -186,6 +245,20 @@ scotchApp.service("expenseService", function($http, $q){
         });
         return( request.then( handleSuccess, handleError ) );
 	}
+	function removeExpenses( id ) {
+		console.log('ids : ', id);
+        var request = $http({
+            method: "delete",
+            url: "/expenses/" + id,
+            params: {
+                action: "delete"
+            },
+            data: {
+                id: id
+            }
+        });
+        return( request.then( handleSuccess, handleError ) );
+    }
 
 
     function handleError( response ) {
