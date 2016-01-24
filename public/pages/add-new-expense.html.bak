@@ -12,7 +12,14 @@
 
 	  <div class="form-group">
 		<label for="edate">Date of expense </label>
-		<input type="text" class="form-control" id="edate" ng-model="expense.e_date">
+		<div class='input-group date' id='datetimepicker1'>
+			<input type="text" class="form-control" id="edate" ng-model="expense.e_date">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div>
+		
+		
 	  </div>
 
 	  <div class="form-group">
@@ -21,7 +28,7 @@
 	  </div>
 
 	  <div class="form-group">
-		<label for="pwd"> Location/Venue  </label>
+		<label for="elocation"> Location/Venue  </label>
 		<input type="text" class="form-control" id="elocation" ng-model="expense.e_venue">
 	  </div>
 
@@ -30,3 +37,4 @@
 
 	
 </div>
+

@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   
   <title> Homepage </title>
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/font-awesome.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
  </head>
  <body ng-controller="mainController">
  	<!-- HEADER AND NAVBAR -->
@@ -17,9 +18,9 @@
 			</div>
 
 			<ul class="nav navbar-nav navbar-right">
-				<!-- <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+				 <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
 				<li><a href="/about"><i class="fa fa-shield"></i> About</a></li>
-				<li><a href="/contact"><i class="fa fa-comment"></i> Contact</a></li> -->
+				<li><a href="/contact"><i class="fa fa-comment"></i> Contact</a></li> 
 				<li><a href="/users"> Users </a></li>
 				<li><a href="/crud"> CRUD Operations </a></li>
 				<li><a href="/expenses"> Expense Tracker ( App ) </a></li>
@@ -33,10 +34,12 @@
 		 <div ng-view></div>
 	</div>
   
-
-
-<script src="assets/js/angular.min.js"></script>
-<script src="assets/js/angular-route.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/moment/min/moment.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
 <script src="script.js"></script>
  </body>
 </html>

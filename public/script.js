@@ -63,8 +63,25 @@ scotchApp.controller('aboutController', function($scope) {
 	$scope.message = 'Look! I am an about page.';
 });
 
-scotchApp.controller('contactController', function($scope) {
+scotchApp.controller('contactController', function($scope, $http) {
 	$scope.message = 'Contact us! JK. This is just a demo.';
+	//$scope.contact = {};
+	$scope.showSuccessAlert = false;
+	$scope.submitContactDetails = function(){
+		//console.log( $scope.contact );
+		$http.post('/contact', $scope.contact ).then( function( response ){
+			console.log('data posted : ' , response.data );
+			// display success page
+			$scope.showSuccessAlert = true;
+			$scope.contact = {};
+		}, function( response ){
+			 if (! angular.isObject( response.data ) || ! response.data.message) {
+				return( $q.reject( "An unknown error occurred." ) );
+			}
+			// Otherwise, use expected error message.
+			return( $q.reject( response.data.message ) );
+		});
+	}
 });
 scotchApp.controller('expensesController', function($scope, $http, expenseService) {
 	$scope.message = 'An awesome app to track the expenses over the weekend!';
@@ -213,6 +230,8 @@ scotchApp.controller('userController', function($scope,  $http, $routeParams) {
 	}
 
 });
+
+
 
 scotchApp.service("expenseService", function($http, $q){
 	return({

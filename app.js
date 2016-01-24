@@ -3,7 +3,10 @@ var express = require('express');
 var sql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
+var secret = require( 'secret' );
 var expenseApp = require('./expenseApp/expenseApp.js');
+var port = process.env.port || 8072;
 
 var pool = sql.createPool({
 	host: 'localhost',
@@ -18,7 +21,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 app.use( express.static( __dirname + "/public"));
-
+secret.set( 'MY_SECRET', 'somesecret' );
 app.get('/', function( request, response ){
 
 });
@@ -46,6 +49,40 @@ app.post('/crud', function( request, response ){
 	addUser( request, response );
 });
 
+app.post('/contact', function( request, response ){
+	//console.log("i recieved the get request!");
+	getContactForm( request, response );
+});
+
+function getContactForm( req, res )
+{
+	//console.log( req.body );
+	var transporter = nodemailer.createTransport({
+		service: "gmail",
+		auth:{
+			user: "chaurasiyaumesh9@gmail.com",
+			pass:"umo_1990" //need to keep it secret
+		}
+	});
+	var mailOptions = {
+		from: "Umesh Chaurasiya <umesh.chaurasiya@adapty.com>",
+		to: " chaurasiyaumesh9@gmail.com",
+		subject: "nodemailer testing { node js }",
+		text: "You have a new submission with the following details...  Name :  "+ req.body.firstName + ", Email : " + req.body.email + ", project description : " + req.body.projectDescription + "",
+		html: "<p>You have a new submission with the following details...</p> <ul><li> Name :  "+ req.body.firstName + "</li><li> Email : " + req.body.email + "</li><li> project description : " + req.body.projectDescription + "</li></ul>"
+	}
+	transporter.sendMail( mailOptions, function( error, info ){
+		if ( error )
+		{
+			console.log( error );
+			res.redirect('/');
+		}else{
+			console.log( 'Message sent succesfully! '+ info.response );
+			res.send( info.response );
+		}
+	});
+}
+
 app.delete('/crud/:id', function( request, response ){
 	//console.log("i recieved the get request!");
 	//console.log( request.params.id );
@@ -64,12 +101,8 @@ app.delete('/expenses/:id', function( request, response ){
 });
 
 
-
-
-
-
-app.listen(1702, function(){
-	console.log('site running on port 1702');
+app.listen(port, function(){
+	console.log('site running on port '+port+'.');
 });
 
 function getContactById(req, res){

@@ -1,0 +1,22 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/chaurasiyaumesh9/angular-app-00",
+  "authors": [
+    "Umesh Chaurasiya <chaurasiyaumesh9@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
+  }
+}

@@ -9,8 +9,10 @@
   "author": "umch",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "mysql": "^2.10.0",
-    "body-parser": "^1.14.2"
+    "nodemailer": "^2.0.0",
+    "secret": "^1.0.2"
   }
 }
