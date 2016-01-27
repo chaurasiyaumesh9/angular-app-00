@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2016 at 09:25 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Jan 10, 2016 at 09:49 AM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -22,6 +22,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `contacts`;
 --
 -- Table structure for table `contacts`
 --
@@ -253,6 +254,8 @@ INSERT INTO `employees` (`employeeNumber`, `lastName`, `firstName`, `extension`,
 
 -- --------------------------------------------------------
 
+
+DROP TABLE IF EXISTS `events`;
 --
 -- Table structure for table `events`
 --
@@ -263,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `e_amount` int(11) NOT NULL,
   `e_venue` varchar(250) NOT NULL,
   PRIMARY KEY (`e_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `events`
@@ -273,12 +276,7 @@ INSERT INTO `events` (`e_Id`, `e_date`, `e_amount`, `e_venue`) VALUES
 (1, '2012-01-01', 2500, 'Kinara Vasai W'),
 (2, '2015-12-31', 2600, 'RJ Virar W'),
 (3, '2015-12-06', 1925, 'BENNYS KITCHEN AND BAR THANE IN / NALLASOPARA W'),
-(4, '2015-12-19', 326, 'MCDONALDS-VASAI BROADW MUMBAI IN'),
-(5, '2016-01-27', 3000, 'Mumbai Metro dome'),
-(6, '2016-01-26', 1800, 'Nallasopara west'),
-(7, '2016-01-01', 2100, 'MCDONALDS Vasai'),
-(8, '2016-01-02', 1400, 'MCDONALDS Borivali'),
-(9, '2016-01-12', 420, 'KFC Churchgate');
+(4, '2015-12-19', 326, 'MCDONALDS-VASAI BROADW MUMBAI IN');
 
 -- --------------------------------------------------------
 
@@ -3709,6 +3707,7 @@ INSERT INTO `orders` (`orderNumber`, `orderDate`, `requiredDate`, `shippedDate`,
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `payers`;
 --
 -- Table structure for table `payers`
 --
