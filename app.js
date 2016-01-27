@@ -1,4 +1,3 @@
-
 var express = require('express');
 var sql = require('mysql');
 var app = express();

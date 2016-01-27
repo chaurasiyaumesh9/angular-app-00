@@ -20,7 +20,7 @@
 			</tr>
 		</thead>
 		<tr ng-repeat="expense in expenses">
-				<td> {{ expense.e_date }} </td>
+				<td> {{ expense.e_date | date:'MM/dd/yyyy' }} </td>
 				<td> {{ expense.e_amount }} </td>
 				<td> {{ expense.e_venue }} </td>
 				<td> 

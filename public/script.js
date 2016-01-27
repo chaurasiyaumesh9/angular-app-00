@@ -88,6 +88,8 @@ scotchApp.controller('expensesController', function($scope, $http, expenseServic
 	$scope.expenses = [];
 	loadRemoteData();
 
+
+
 	$scope.addNewExpense = function(){   
 		
 		expenseService.addNewExpense( $scope.expense ).then( function(){ 
@@ -150,9 +152,20 @@ scotchApp.controller('expensesController', function($scope, $http, expenseServic
     }
     function loadRemoteData() {
         expenseService.getAllExpenses().then(function( response ) {
-            applyRemoteData( response );
+			//console.log( "response : ", response );
+			
+            applyRemoteData( convertDateToString( response ) );
         });
     }
+	
+	function convertDateToString( expenses){
+		for (  var i=0;i< expenses.length; i++ )
+		{
+			expenses[i].e_date = new Date( expenses[i].e_date );
+		}
+		return expenses;
+	}
+
 });
 
 

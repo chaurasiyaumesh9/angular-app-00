@@ -10,13 +10,14 @@
 	</div>
 	<form role="form" ng-submit="addNewExpense()" method="POST">
 
-	  <div class="form-group">
+	  <div class="form-group" id="form-wrapper">
 		<label for="edate">Date of expense </label>
-		<div class='input-group date' id='datetimepicker1'>
+		<div class='input-group date' id='datetimepicker1' data-provide="datepicker">
 			<input type="text" class="form-control" id="edate" ng-model="expense.e_date">
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-calendar"></span>
-			</span>
+			 <span class="input-group-addon">
+                    <span class="fa fa-calendar">
+                    </span>
+                </span> 
 		</div>
 		
 		
@@ -24,7 +25,7 @@
 
 	  <div class="form-group">
 		<label for="eamount"> Amount being spent </label>
-		<input type="text" class="form-control" id="eamount" ng-model="expense.e_amount">
+		<input type="number" class="form-control" id="eamount" ng-model="expense.e_amount">
 	  </div>
 
 	  <div class="form-group">
@@ -40,6 +41,10 @@
 
  <script type="text/javascript">
 	$(function () {
-		$('#datetimepicker1').datetimepicker();
+		$('#datetimepicker1').datepicker({
+			format: 'yyyy/mm/dd',
+			autoclose: true
+		});
+		
 	});
 </script>
