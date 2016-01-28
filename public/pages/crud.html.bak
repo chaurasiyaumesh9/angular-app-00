@@ -8,7 +8,7 @@
 <div class="container">
 
 	<ul>
-		<li ng-repeat="user in usersList track by $index">
+		<li ng-repeat="user in usersList ">
 			{{ user.username }} ( <a ng-click="deleteUser(user)">  delete </a> ) 
 		</li>
 	</ul>

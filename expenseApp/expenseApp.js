@@ -24,6 +24,7 @@ function addNewExpense(sqlpool, req,res){
 		conn.query("insert into events(e_date, e_amount, e_venue) values('"+ req.body.expense.e_date +"','"+ req.body.expense.e_amount +"','"+ req.body.expense.e_venue +"')", function(err, rows) {
              if (!err)
 			{
+				 console.log('rows :', rows);
 				res.json( rows );
 			}else{
 				console.log('Error while performing the query..check function addNewExpense() for more details..');

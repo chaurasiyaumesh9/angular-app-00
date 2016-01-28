@@ -8,7 +8,7 @@
 
 <div id="" class="container">
 	<div class="alert alert-success" ng-show="showSuccessAlert">
-	  <strong> Record(s) Deleted successfully! </strong> 
+	  <strong> Record Deleted successfully! </strong> 
 	</div>
 	<table class="table table-responsive table-striped">
 		<thead>

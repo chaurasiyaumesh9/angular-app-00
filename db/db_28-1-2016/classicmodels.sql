@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2016 at 12:52 PM
+-- Generation Time: Jan 27, 2016 at 09:25 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -263,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `e_amount` int(11) NOT NULL,
   `e_venue` varchar(250) NOT NULL,
   PRIMARY KEY (`e_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `events`
@@ -275,6 +275,7 @@ INSERT INTO `events` (`e_Id`, `e_date`, `e_amount`, `e_venue`) VALUES
 (3, '2015-12-06', 1925, 'BENNYS KITCHEN AND BAR THANE IN / NALLASOPARA W'),
 (4, '2015-12-19', 326, 'MCDONALDS-VASAI BROADW MUMBAI IN'),
 (5, '2016-01-27', 3000, 'Mumbai Metro dome'),
+(6, '2016-01-26', 1800, 'Nallasopara west'),
 (7, '2016-01-01', 2100, 'MCDONALDS Vasai'),
 (8, '2016-01-02', 1400, 'MCDONALDS Borivali'),
 (9, '2016-01-12', 420, 'KFC Churchgate');
@@ -4199,7 +4200,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `users`
@@ -4214,8 +4215,7 @@ INSERT INTO `users` (`id`, `username`) VALUES
 (34, 'sunil'),
 (35, 'vikki'),
 (36, 'suraj'),
-(37, 'Nikhil'),
-(38, 'wiki');
+(37, 'Nikhil');
 
 --
 -- Constraints for dumped tables

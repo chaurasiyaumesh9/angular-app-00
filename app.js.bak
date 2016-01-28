@@ -60,7 +60,7 @@ app.post('/contact', function( request, response ){
 
 app.get('/crud', function( request, response ){
 	//console.log("i recieved the get request!");
-	//console.log('serving JSON...');
+	console.log('serving JSON...');
 	getUsers( request, response );
 	
 });

@@ -128,7 +128,6 @@ scotchApp.controller('expensesController', function($scope, $http, expenseServic
         } else {
             $scope.selectAll = false;
         }*/
-		
         angular.forEach($scope.expenses, function (expense) {
             expense.selectSingle = $scope.selectAll;
         });
